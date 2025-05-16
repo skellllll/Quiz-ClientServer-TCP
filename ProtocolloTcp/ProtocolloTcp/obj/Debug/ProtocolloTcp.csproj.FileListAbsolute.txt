@@ -1,0 +1,21 @@
+C:\Users\colombo.21191\source\repos\ProtocolloTcp\ProtocolloTcp\obj\Debug\ProtocolloTcp.csproj.AssemblyReference.cache
+C:\Users\colombo.21191\source\repos\ProtocolloTcp\ProtocolloTcp\obj\Debug\ProtocolloTcp.csproj.CoreCompileInputs.cache
+C:\Users\colombo.21191\source\repos\ProtocolloTcp\ProtocolloTcp\bin\Debug\ProtocolloTcp.exe.config
+C:\Users\colombo.21191\source\repos\ProtocolloTcp\ProtocolloTcp\bin\Debug\ProtocolloTcp.exe
+C:\Users\colombo.21191\source\repos\ProtocolloTcp\ProtocolloTcp\bin\Debug\ProtocolloTcp.pdb
+C:\Users\colombo.21191\source\repos\ProtocolloTcp\ProtocolloTcp\obj\Debug\ProtocolloTcp.exe
+C:\Users\colombo.21191\source\repos\ProtocolloTcp\ProtocolloTcp\obj\Debug\ProtocolloTcp.pdb
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolloTcp\ProtocolloTcp\bin\Debug\ProtocolloTcp.exe.config
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolloTcp\ProtocolloTcp\bin\Debug\ProtocolloTcp.exe
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolloTcp\ProtocolloTcp\bin\Debug\ProtocolloTcp.pdb
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolloTcp\ProtocolloTcp\obj\Debug\ProtocolloTcp.csproj.AssemblyReference.cache
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolloTcp\ProtocolloTcp\obj\Debug\ProtocolloTcp.csproj.CoreCompileInputs.cache
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolloTcp\ProtocolloTcp\obj\Debug\ProtocolloTcp.exe
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolloTcp\ProtocolloTcp\obj\Debug\ProtocolloTcp.pdb
+C:\Users\colombo.21191\Desktop\TCP\ProtocolloTcp\ProtocolloTcp\bin\Debug\ProtocolloTcp.exe.config
+C:\Users\colombo.21191\Desktop\TCP\ProtocolloTcp\ProtocolloTcp\bin\Debug\ProtocolloTcp.exe
+C:\Users\colombo.21191\Desktop\TCP\ProtocolloTcp\ProtocolloTcp\bin\Debug\ProtocolloTcp.pdb
+C:\Users\colombo.21191\Desktop\TCP\ProtocolloTcp\ProtocolloTcp\obj\Debug\ProtocolloTcp.csproj.AssemblyReference.cache
+C:\Users\colombo.21191\Desktop\TCP\ProtocolloTcp\ProtocolloTcp\obj\Debug\ProtocolloTcp.csproj.CoreCompileInputs.cache
+C:\Users\colombo.21191\Desktop\TCP\ProtocolloTcp\ProtocolloTcp\obj\Debug\ProtocolloTcp.exe
+C:\Users\colombo.21191\Desktop\TCP\ProtocolloTcp\ProtocolloTcp\obj\Debug\ProtocolloTcp.pdb
