@@ -15,15 +15,15 @@ namespace ProtocolloTcp
         }
         private static readonly string[] Questions =
         {
-            "Qual è la capitale della Svizzera?",
-            "In che scuderia corre Leclerc",
-            "In quale anno è stata fondata Microsoft?"
+            "Qual e' la capitale della Svizzera?",
+            "In che scuderia corre Leclerc?",
+            "In quale anno e' stata fondata Microsoft?"
         };
 
         private static readonly string[] Answers =
         {
-            "Berna",
-            "Ferrari",
+            "berna",
+            "ferrari",
             "1975"
         };
         public static void StartServer()
@@ -61,7 +61,7 @@ namespace ProtocolloTcp
                     }
                 }
 
-                string scoreMessage = $"Il tuo punteggio finale è: {score} su {Questions.Length}<EOF>";
+                string scoreMessage = $"Il tuo punteggio finale e': {score} su {Questions.Length}<EOF>";
                 byte[] scoreMsg = Encoding.ASCII.GetBytes(scoreMessage);
                 handler.Send(scoreMsg);
 

@@ -1,0 +1,21 @@
+C:\Users\colombo.21191\source\repos\ProtocolTcpClient\ProtocolTcpClient\obj\Debug\ProtocolTcpClient.csproj.AssemblyReference.cache
+C:\Users\colombo.21191\source\repos\ProtocolTcpClient\ProtocolTcpClient\obj\Debug\ProtocolTcpClient.csproj.CoreCompileInputs.cache
+C:\Users\colombo.21191\source\repos\ProtocolTcpClient\ProtocolTcpClient\bin\Debug\ProtocolTcpClient.exe.config
+C:\Users\colombo.21191\source\repos\ProtocolTcpClient\ProtocolTcpClient\bin\Debug\ProtocolTcpClient.exe
+C:\Users\colombo.21191\source\repos\ProtocolTcpClient\ProtocolTcpClient\bin\Debug\ProtocolTcpClient.pdb
+C:\Users\colombo.21191\source\repos\ProtocolTcpClient\ProtocolTcpClient\obj\Debug\ProtocolTcpClient.exe
+C:\Users\colombo.21191\source\repos\ProtocolTcpClient\ProtocolTcpClient\obj\Debug\ProtocolTcpClient.pdb
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolTcpClient\ProtocolTcpClient\bin\Debug\ProtocolTcpClient.exe.config
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolTcpClient\ProtocolTcpClient\bin\Debug\ProtocolTcpClient.exe
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolTcpClient\ProtocolTcpClient\bin\Debug\ProtocolTcpClient.pdb
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolTcpClient\ProtocolTcpClient\obj\Debug\ProtocolTcpClient.csproj.AssemblyReference.cache
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolTcpClient\ProtocolTcpClient\obj\Debug\ProtocolTcpClient.csproj.CoreCompileInputs.cache
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolTcpClient\ProtocolTcpClient\obj\Debug\ProtocolTcpClient.exe
+C:\Users\colombo.21191\Desktop\Nuova cartella\ProtocolTcpClient\ProtocolTcpClient\obj\Debug\ProtocolTcpClient.pdb
+C:\Users\colombo.21191\Desktop\TCP\ProtocolTcpClient\ProtocolTcpClient\bin\Debug\ProtocolTcpClient.exe.config
+C:\Users\colombo.21191\Desktop\TCP\ProtocolTcpClient\ProtocolTcpClient\bin\Debug\ProtocolTcpClient.exe
+C:\Users\colombo.21191\Desktop\TCP\ProtocolTcpClient\ProtocolTcpClient\bin\Debug\ProtocolTcpClient.pdb
+C:\Users\colombo.21191\Desktop\TCP\ProtocolTcpClient\ProtocolTcpClient\obj\Debug\ProtocolTcpClient.csproj.AssemblyReference.cache
+C:\Users\colombo.21191\Desktop\TCP\ProtocolTcpClient\ProtocolTcpClient\obj\Debug\ProtocolTcpClient.csproj.CoreCompileInputs.cache
+C:\Users\colombo.21191\Desktop\TCP\ProtocolTcpClient\ProtocolTcpClient\obj\Debug\ProtocolTcpClient.exe
+C:\Users\colombo.21191\Desktop\TCP\ProtocolTcpClient\ProtocolTcpClient\obj\Debug\ProtocolTcpClient.pdb
