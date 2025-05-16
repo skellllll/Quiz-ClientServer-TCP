@@ -7,7 +7,7 @@ namespace ProtocolTcpClient
 {
     class Client
     {
-        public static int Main(String[] args)
+        public static int Main(string[] args)
         {
             StartClient();
             return 0;
@@ -15,7 +15,7 @@ namespace ProtocolTcpClient
 
         public static void StartClient()
         {
-            byte[] bytes = new byte[1024];
+            byte[] buffer = new byte[1024];
 
             try
             {
@@ -23,52 +23,54 @@ namespace ProtocolTcpClient
                 IPAddress ipAddress = host.AddressList[0];
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
 
-                Socket sender = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-
-                try
+                using (Socket sender = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp))
                 {
                     sender.Connect(remoteEP);
-                    Console.WriteLine("Connesso al server...\n");
+                    Console.WriteLine("Connesso al server!");
 
-                    for (int i = 0; i < 3; i++)
+                    Console.Write("Vuoi giocare al quiz? (si/no): ");
+                    string playChoice = Console.ReadLine().ToLower();
+
+                    byte[] msg = Encoding.ASCII.GetBytes(playChoice + "<EOF>");
+                    sender.Send(msg);
+
+                    if (playChoice != "si")
                     {
-                        // Ricevi la domanda
-                        int bytesRec = sender.Receive(bytes);
-                        string question = Encoding.ASCII.GetString(bytes, 0, bytesRec).Replace("<EOF>", "");
+                        Console.WriteLine("OK, alla prossima!");
+                        return;
+                    }
+
+                    int numQuestions;
+                    do
+                    {
+                        Console.Write("Quante domande vuoi? (1-5): ");
+                    } while (!int.TryParse(Console.ReadLine(), out numQuestions) || numQuestions < 1 || numQuestions > 5);
+
+                    msg = Encoding.ASCII.GetBytes(numQuestions.ToString() + "<EOF>");
+                    sender.Send(msg);
+
+                    Console.WriteLine("\nIniziamo il quiz!\n");
+
+                    for (int i = 0; i < numQuestions; i++)
+                    {
+                        int bytesRec = sender.Receive(buffer);
+                        string question = Encoding.ASCII.GetString(buffer, 0, bytesRec).Replace("<EOF>", "");
                         Console.WriteLine($"Domanda {i + 1}: {question}");
 
-                        // Invia la risposta
                         Console.Write("La tua risposta: ");
                         string answer = Console.ReadLine();
-                        string answerMessage = $"{answer}<EOF>";
-                        byte[] msg = Encoding.ASCII.GetBytes(answerMessage);
+                        msg = Encoding.ASCII.GetBytes(answer + "<EOF>");
                         sender.Send(msg);
                     }
 
-                    // Ricevi il punteggio finale
-                    int finalBytesRec = sender.Receive(bytes);
-                    string score = Encoding.ASCII.GetString(bytes, 0, finalBytesRec).Replace("<EOF>", "");
+                    int finalBytesRec = sender.Receive(buffer);
+                    string score = Encoding.ASCII.GetString(buffer, 0, finalBytesRec).Replace("<EOF>", "");
                     Console.WriteLine($"\n{score}");
-
-                    sender.Shutdown(SocketShutdown.Both);
-                    sender.Close();
-                }
-                catch (ArgumentNullException ane)
-                {
-                    Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
-                }
-                catch (SocketException se)
-                {
-                    Console.WriteLine("SocketException : {0}", se.ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Unexpected exception : {0}", e.ToString());
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                Console.WriteLine($"Errore: {e.Message}");
             }
 
             Console.WriteLine("\nPremi un tasto per uscire...");

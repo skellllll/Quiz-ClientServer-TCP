@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -8,24 +7,30 @@ namespace ProtocolloTcp
 {
     class Server
     {
-        public static int Main(String[] args)
+        private static readonly string[] AllQuestions =
+        {
+            "Qual e' la capitale della Svizzera?",
+            "In che scuderia corre Leclerc?",
+            "In quale anno e' stata fondata Microsoft?",
+            "Quanti continenti ci sono nel mondo?",
+            "Qual e' il fiume piu' lungo d'Italia?"
+        };
+
+        private static readonly string[] AllAnswers =
+        {
+            "berna",
+            "ferrari",
+            "1975",
+            "7",
+            "po"
+        };
+
+        public static int Main(string[] args)
         {
             StartServer();
             return 0;
         }
-        private static readonly string[] Questions =
-        {
-            "Qual e' la capitale della Svizzera?",
-            "In che scuderia corre Leclerc?",
-            "In quale anno e' stata fondata Microsoft?"
-        };
 
-        private static readonly string[] Answers =
-        {
-            "berna",
-            "ferrari",
-            "1975"
-        };
         public static void StartServer()
         {
             IPHostEntry host = Dns.GetHostEntry("localhost");
@@ -38,43 +43,76 @@ namespace ProtocolloTcp
                 listener.Bind(localEndPoint);
                 listener.Listen(10);
 
-                Console.WriteLine("Waiting for a connection...");
-                Socket handler = listener.Accept();
+                Console.WriteLine("In attesa di connessioni...");
 
-                int score = 0;
-                byte[] bytes = new byte[1024];
-
-                for (int i = 0; i < Questions.Length; i++)
+                while (true)
                 {
-                    string questionMessage = Questions[i] + "<EOF>";
-                    byte[] msg = Encoding.ASCII.GetBytes(questionMessage);
-                    handler.Send(msg);
-                    Console.WriteLine($"Sent question: {Questions[i]}");
+                    Socket handler = listener.Accept();
+                    Console.WriteLine("Client connesso!");
 
-                    int bytesRec = handler.Receive(bytes);
-                    string answer = Encoding.ASCII.GetString(bytes, 0, bytesRec).Replace("<EOF>", "").Trim().ToLower();
-                    Console.WriteLine($"Received answer: {answer}");
-
-                    if (answer == Answers[i])
+                    try
                     {
-                        score++;
+                        byte[] buffer = new byte[1024];
+
+                        int bytesRec = handler.Receive(buffer);
+                        string playChoice = Encoding.ASCII.GetString(buffer, 0, bytesRec).Replace("<EOF>", "");
+
+                        if (playChoice.ToLower() != "si")
+                        {
+                            Console.WriteLine("Client non vuole giocare. Chiudo connessione.");
+                            handler.Shutdown(SocketShutdown.Both);
+                            handler.Close();
+                            continue;
+                        }
+
+                        bytesRec = handler.Receive(buffer);
+                        int numQuestions = int.Parse(Encoding.ASCII.GetString(buffer, 0, bytesRec).Replace("<EOF>", ""));
+
+                        if (numQuestions < 1) numQuestions = 1;
+                        if (numQuestions > 5) numQuestions = 5;
+
+                        Console.WriteLine($"Client vuole {numQuestions} domande");
+
+                        int score = 0;
+                        Random rnd = new Random();
+
+                        for (int i = 0; i < numQuestions; i++)
+                        {
+                            int qIndex = rnd.Next(AllQuestions.Length);
+                            string question = AllQuestions[qIndex];
+                            string correctAnswer = AllAnswers[qIndex];
+
+                            string questionMessage = question + "<EOF>";
+                            byte[] msg = Encoding.ASCII.GetBytes(questionMessage);
+                            handler.Send(msg);
+                            Console.WriteLine($"Inviata domanda: {question}");
+
+                            bytesRec = handler.Receive(buffer);
+                            string answer = Encoding.ASCII.GetString(buffer, 0, bytesRec)
+                                .Replace("<EOF>", "").Trim().ToLower();
+                            Console.WriteLine($"Ricevuta risposta: {answer}");
+
+                            if (answer == correctAnswer)
+                            {
+                                score++;
+                            }
+                        }
+
+                        string scoreMessage = $"Il tuo punteggio finale e': {score} su {numQuestions}<EOF>";
+                        byte[] scoreMsg = Encoding.ASCII.GetBytes(scoreMessage);
+                        handler.Send(scoreMsg);
+                    }
+                    finally
+                    {
+                        handler.Shutdown(SocketShutdown.Both);
+                        handler.Close();
                     }
                 }
-
-                string scoreMessage = $"Il tuo punteggio finale e': {score} su {Questions.Length}<EOF>";
-                byte[] scoreMsg = Encoding.ASCII.GetBytes(scoreMessage);
-                handler.Send(scoreMsg);
-
-                handler.Shutdown(SocketShutdown.Both);
-                handler.Close();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                Console.WriteLine($"Errore: {e.Message}");
             }
-
-            Console.WriteLine("\nPress any key to continue...");
-            Console.ReadKey();
         }
     }
 }
